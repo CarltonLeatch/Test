@@ -1,0 +1,28 @@
+org 100h
+
+xor cx,cx
+
+petla:
+
+mov ah, 01h
+int 21h
+
+cmp al, 0xd
+je wypisz
+inc cx
+push ax
+
+
+
+jmp petla
+;-------Funkcje i tekst----------------
+koniec:
+mov ax, 4C00h
+int 0x21
+
+wypisz:
+pop ax
+mov dl, al
+mov ah, 02h
+int 21h
+loop wypisz
